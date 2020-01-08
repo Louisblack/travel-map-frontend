@@ -1,0 +1,2 @@
+stage     = "test"
+namespace = "master"
