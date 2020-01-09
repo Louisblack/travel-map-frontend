@@ -69,7 +69,7 @@ jobs:
         with:
           args: --acl private --follow-symlinks --delete
         env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_S3_BUCKET: master-test-travel-map-origin
           AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
           AWS_REGION: 'eu-west-1'   # optional: defaults to us-east-1
