@@ -7,15 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 12.x
       - name: npm install, build, and test
         run: |
           npm ci
           npm test
-          npm run build-prod
+          npm run build
         env:
           CI: true
   terraform:
@@ -65,6 +65,16 @@ jobs:
     needs: [build, terraform]
     steps:
       - uses: actions/checkout@master
+      - name: Build prod
+          uses: actions/setup-node@v1
+          with:
+            node-version: 12.x
+      - name: npm install, build, and test
+        run: |
+          npm ci
+          npm run build-prod
+        env:
+          CI: true
       - uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl private --follow-symlinks --delete
