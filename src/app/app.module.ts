@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { AmplifyAngularModule, AmplifyService, AmplifyModules } from 'aws-amplify-angular';
@@ -9,6 +9,7 @@ import Storage from '@aws-amplify/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {BasicAuthInterceptor} from './__helpers/basic-auth-intercepter';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AppComponent } from './app.component';
           Interactions
         });
       }
-    }
+    },
+    // { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

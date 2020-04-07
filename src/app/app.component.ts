@@ -28,7 +28,8 @@ export class AppComponent {
           this.greeting = "Hello " + this.user.username;
           console.log(authState);
           this.serverGreeting =
-            this.http.get<any>("https://7nelk89tnl.execute-api.eu-west-1.amazonaws.com/Prod/hello").pipe(map(o => o.greeting));
+            this.http.get<any>("https://7nelk89tnl.execute-api.eu-west-1.amazonaws.com/Prod/hello")
+              .pipe(map(o => o.greeting));
         }
       });
   }
