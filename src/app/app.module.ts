@@ -32,7 +32,7 @@ import {BasicAuthInterceptor} from './__helpers/basic-auth-intercepter';
         });
       }
     },
-    // { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
